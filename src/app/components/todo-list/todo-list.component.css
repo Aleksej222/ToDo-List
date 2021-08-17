@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+.title {
+    margin-top: 1.2em;
+    margin-bottom: 1.5em;
+}
+
+.items {
+    margin: 1.2em auto;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+}
+

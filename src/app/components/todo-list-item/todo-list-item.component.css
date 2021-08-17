@@ -1,0 +1,11 @@
+.item {
+    /* text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap; */
+    word-break: break-all;
+}
+
+span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

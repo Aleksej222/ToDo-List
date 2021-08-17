@@ -1,0 +1,16 @@
+
+<div class="text-center">
+    <h1 class="title">To Do List</h1>
+</div>
+
+<div class="container">
+   
+    <form (submit) = "add($event)">
+        <input type="text" class="form-control w-50 d-inline" [(ngModel)]="newItem" name="biloSta">
+        <button class="btn btn-success" type="submit">Add Task</button>
+    </form>
+
+    <div *ngFor="let task of tasks" class="items">
+        <app-todo-list-item [task]="task"></app-todo-list-item>
+    </div>
+</div>

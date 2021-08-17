@@ -1,0 +1,13 @@
+<div class="row justify-content-lg-center">
+    <div class="col-lg-6">
+        <!-- <read-more> -->
+            <h3 [ngClass]='["text-danger ", " item"]' #taskText>{{task}}</h3>
+        <!-- </read-more> -->
+
+        <!-- <span (click) = "expandText($event)" *ngIf="isOverflown(taskText)">{{this.isExpanded?'hide':'show more'}}</span> -->
+    </div>
+    <div class="col-lg-2">
+        <button (click)="editItem($event)" type="button" class="btn btn-primary w-50">Edit</button>
+        <button (click)="deleteItem($event)" type="button" class="btn btn-danger w-50">Delete</button>
+    </div>
+</div>
