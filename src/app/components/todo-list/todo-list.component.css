@@ -3,8 +3,7 @@
 }
 
 .title {
-    margin-top: 1.2em;
-    margin-bottom: 1.5em;
+   margin-bottom: 2em;
 }
 
 .items {
@@ -16,3 +15,10 @@ form {
     justify-content: center;
 }
 
+.users {
+    margin-top: 1.2rem;
+    display: flex;
+    width: 15%;
+    justify-content: space-around;
+    align-items: center;
+}

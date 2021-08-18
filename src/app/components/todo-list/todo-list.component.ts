@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class TodoListComponent implements OnInit {
   tasks = new Array();
   newItem: string = "";
+  
   constructor() { }
 
   ngOnInit(): void {

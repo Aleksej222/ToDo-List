@@ -9,3 +9,7 @@ span:hover {
     cursor: pointer;
     text-decoration: underline;
 }
+
+.task-items {
+    margin-top: 3rem;
+}

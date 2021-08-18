@@ -1,10 +1,28 @@
+<div class="users">
+<div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      Users
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">User 1</a>
+      <a class="dropdown-item" href="#">User 2</a>
+      <a class="dropdown-item" href="#">User 3</a>
+    </div>
+</div>
+
+<div class="add-user">
+    <button type="button" class="btn btn-primary btn-add-user" data-toggle="tooltip" data-placement="bottom" title="Add new user">
+     +
+    </button>
+</div>
+
+</div>
 
 <div class="text-center">
     <h1 class="title">To Do List</h1>
 </div>
 
 <div class="container">
-   
     <form (submit) = "add($event)">
         <input type="text" class="form-control w-50 d-inline" [(ngModel)]="newItem" name="biloSta">
         <button class="btn btn-success" type="submit">Add Task</button>

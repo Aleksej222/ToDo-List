@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TodoListItemComponent implements OnInit {
   @Input() task:string='';
   isExpanded:boolean=false;
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -17,7 +18,7 @@ export class TodoListItemComponent implements OnInit {
     e.target.parentNode.parentNode.remove();
   }
 
-  editItem(e:any){
+  editItem(e:any) {
    let editedTask = prompt("Edit the text: ");
     if (editedTask) {
       this.task = editedTask as string;
@@ -29,13 +30,17 @@ export class TodoListItemComponent implements OnInit {
   }
   isOverflown(elementId:string) {
     const elem = document.getElementById(elementId);
+
     if (elem) {
         return (elem.offsetWidth < elem.scrollWidth);
     }
+
     else {
         return false;
     }
   }
-  
 
+  done(e:any) {
+   e.target.disabled = true;
+  }
 }
