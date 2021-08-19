@@ -1,7 +1,4 @@
 .item {
-    /* text-overflow: ellipsis;
-    overflow: hidden; 
-    white-space: nowrap; */
     word-break: break-all;
 }
 
@@ -12,4 +9,12 @@ span:hover {
 
 .task-items {
     margin-top: 3rem;
+    border-bottom: 1px solid rgb(145, 145, 145);
+    padding-bottom: 20px;
+}
+
+.task-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }

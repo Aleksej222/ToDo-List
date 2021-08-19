@@ -1,0 +1,11 @@
+<h1 class="text-nowrap">Add new user</h1>
+
+<div class="container">
+    <form (submit) = "addUser()"  class="form form-group">
+        <label for="username" class="pb-2">Username:</label>
+        <div class="pb-2">
+            <input type="text" name="username" class="form-control" [(ngModel)]="value">
+        </div>
+        <button type="submit" name="submit" class="btn btn-success mt-1">Add User</button>
+    </form>
+</div>

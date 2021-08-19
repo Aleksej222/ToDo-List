@@ -1,17 +1,19 @@
-<div class="users">
-<div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+<div class="container-fluid">
+
+
+
+<div class="row users">
+<div class="dropdown col-lg-2 col-sm-3 col-5">
+    <button type="button" class="btn btn-primary dropdown-toggle w-100" [attr.data-toggle]="users.length>0?'dropdown':null">
       Users
     </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">User 1</a>
-      <a class="dropdown-item" href="#">User 2</a>
-      <a class="dropdown-item" href="#">User 3</a>
+    <div class="dropdown-menu" id="dropdown">
+      <a class="dropdown-item" href="#" *ngFor="let user of users">{{user}}</a>
     </div>
 </div>
 
-<div class="add-user">
-    <button type="button" class="btn btn-primary btn-add-user" data-toggle="tooltip" data-placement="bottom" title="Add new user">
+<div class="col-lg-2 col-sm-2 col-2">
+    <button (click) = "addNewUser()" type="button" class="btn btn-primary btn-add-user" data-toggle="tooltip" data-placement="bottom" title="Add new user">
      +
     </button>
 </div>
@@ -31,4 +33,6 @@
     <div *ngFor="let task of tasks" class="items">
         <app-todo-list-item [task]="task"></app-todo-list-item>
     </div>
+</div>
+
 </div>

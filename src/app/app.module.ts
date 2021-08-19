@@ -8,6 +8,9 @@ import { TodoListItemComponent } from './components/todo-list-item/todo-list-ite
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ReadMoreComponent } from './components/read-more/read-more.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AddUserComponent } from './components/modals/add-user/add-user.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -15,13 +18,16 @@ import { ReadMoreComponent } from './components/read-more/read-more.component';
     AppComponent,
     TodoListComponent,
     TodoListItemComponent,
-    ReadMoreComponent
+    ReadMoreComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
