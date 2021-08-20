@@ -20,6 +20,7 @@ form {
 .users {
     margin-top: 1.2rem;
     margin-left: 1.2rem;
+    margin-right: 1em;
     padding-bottom: 20px;
 }
 
@@ -32,4 +33,10 @@ form {
     vertical-align: text-top;
     line-height: 1em;
     padding: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .three-dots {
+      font-size: .8rem;
+  }
 }

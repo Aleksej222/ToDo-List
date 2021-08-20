@@ -1,0 +1,9 @@
+@media screen and (max-width: 1000px) {
+    .delete-user-buttons {
+        margin-bottom: .5rem;
+    }
+    
+    h1 {
+        font-size: 1.2rem;
+    }
+}

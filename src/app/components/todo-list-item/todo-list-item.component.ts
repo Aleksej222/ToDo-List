@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { CompletedTasksComponent } from '../modals/completed-tasks/completed-tasks.component';
 import { EditTaskComponent } from '../modals/edit-task/edit-task.component';
 
 @Component({
@@ -10,6 +11,7 @@ import { EditTaskComponent } from '../modals/edit-task/edit-task.component';
 export class TodoListItemComponent implements OnInit {
   @Input() task:string='';
   isExpanded:boolean=false;
+  value:any;
   
   constructor( public dialog: MatDialog) { }
 
@@ -44,7 +46,16 @@ export class TodoListItemComponent implements OnInit {
     }
   }
 
-  done(e:any) {
-   e.target.disabled = true;
+  taskCompleted(e:any) {
+    var taskText = e.target.parentNode.parentNode.innerText;
+    console.log(taskText.innerText)
+
+    const dialogRef = this.dialog.open(CompletedTasksComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result)
+      taskText.push(result);
+    });
+
   }
 }

@@ -13,6 +13,7 @@ import { AddUserComponent } from './components/modals/add-user/add-user.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditTaskComponent } from './components/modals/edit-task/edit-task.component';
 import { DeleteUserComponent } from './components/modals/delete-user/delete-user.component';
+import { CompletedTasksComponent } from './components/modals/completed-tasks/completed-tasks.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { DeleteUserComponent } from './components/modals/delete-user/delete-user
     ReadMoreComponent,
     AddUserComponent,
     EditTaskComponent,
-    DeleteUserComponent
+    DeleteUserComponent,
+    CompletedTasksComponent
   ],
   imports: [
     BrowserModule,
