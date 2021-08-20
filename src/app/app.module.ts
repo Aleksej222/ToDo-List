@@ -11,6 +11,8 @@ import { ReadMoreComponent } from './components/read-more/read-more.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AddUserComponent } from './components/modals/add-user/add-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditTaskComponent } from './components/modals/edit-task/edit-task.component';
+import { DeleteUserComponent } from './components/modals/delete-user/delete-user.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TodoListComponent,
     TodoListItemComponent,
     ReadMoreComponent,
-    AddUserComponent
+    AddUserComponent,
+    EditTaskComponent,
+    DeleteUserComponent
   ],
   imports: [
     BrowserModule,

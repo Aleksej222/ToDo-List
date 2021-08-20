@@ -1,0 +1,11 @@
+<h1 class="text-center text-nowrap">Izmjeni tekst</h1>
+
+<div class="container">
+    <form (submit) = "editTask()" class="form form-group">
+        <input type="text" class="form-control" [(ngModel)]="value" name="something">
+        <div class="d-flex justify-content-between mt-1">
+            <button type="submit" class="btn btn-success mt-1">Potvrdi</button>
+            <button (click) = "cancelAction($event)" type="button" class="btn btn-danger mt-1">Otkazi</button>
+        </div>
+    </form>
+</div>

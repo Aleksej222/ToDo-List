@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { EditTaskComponent } from '../modals/edit-task/edit-task.component';
 
 @Component({
   selector: 'app-todo-list-item',
@@ -9,7 +11,7 @@ export class TodoListItemComponent implements OnInit {
   @Input() task:string='';
   isExpanded:boolean=false;
   
-  constructor() { }
+  constructor( public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -18,11 +20,13 @@ export class TodoListItemComponent implements OnInit {
     e.target.parentNode.parentNode.remove();
   }
 
-  editItem(e:any) {
-   let editedTask = prompt("Edit the text: ");
-    if (editedTask) {
-      this.task = editedTask as string;
-    }
+  editItem() {
+    const dialogRef = this.dialog.open(EditTaskComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result)
+      this.task = result;
+    });
   }
 
   expandText(e:any) {

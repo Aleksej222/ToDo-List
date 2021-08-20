@@ -20,4 +20,8 @@ export class AddUserComponent implements OnInit {
     }
     this.value = "";
   }
+
+  cancelAction(e:any) {
+    this.dialogRef.close();
+  }
 }

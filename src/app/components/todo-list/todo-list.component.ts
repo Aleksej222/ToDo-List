@@ -1,6 +1,8 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddUserComponent } from '../modals/add-user/add-user.component';
+import { DeleteUserComponent } from '../modals/delete-user/delete-user.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -14,9 +16,9 @@ export class TodoListComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog
-    ) {
-
-   }
+  ) {
+ 
+  }
 
   ngOnInit(): void {
   }
@@ -31,14 +33,28 @@ export class TodoListComponent implements OnInit {
   }
 
   addNewUser() {
-    // let newUser = prompt("User name:");
-    // if (newUser) {
-    //   this.users.push(newUser);
-    // }
     const dialogRef = this.dialog.open(AddUserComponent);
 
     dialogRef.afterClosed().subscribe(result => {
+      if(result)
       this.users.push(result);
     });
+  }
+
+  deleteUser(user:any) {
+    const dialogRef = this.dialog.open(DeleteUserComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.delete==true)
+      {
+        var index = this.users.indexOf(user);
+        this.users.splice(index,1);
+
+        // moze i ovako
+        // this.users=this.users.filter((u)=>{
+        //   return u!=user
+        // }); 
+      } 
+    })
   }
 }

@@ -1,11 +1,14 @@
-<h1 class="text-nowrap">Add new user</h1>
+<h1 class="text-nowrap">Dodaj novog korisnika</h1>
 
 <div class="container">
     <form (submit) = "addUser()"  class="form form-group">
-        <label for="username" class="pb-2">Username:</label>
+        <label for="username" class="pb-3 fs-5">Username:</label>
         <div class="pb-2">
-            <input type="text" name="username" class="form-control" [(ngModel)]="value">
+            <input type="text" name="username" class="form-control" [(ngModel)]="value" maxlength="20">
         </div>
-        <button type="submit" name="submit" class="btn btn-success mt-1">Add User</button>
+        <div class="d-flex justify-content-between">
+            <button type="submit" name="submit" class="btn btn-success mt-1">Dodaj korisnika</button>
+            <button (click) = "cancelAction($event)" type="button" name="cancelAction" class="btn btn-danger mt-1">Otkazi</button>
+        </div>
     </form>
 </div>

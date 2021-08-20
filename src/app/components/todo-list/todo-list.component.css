@@ -22,3 +22,14 @@ form {
     margin-left: 1.2rem;
     padding-bottom: 20px;
 }
+
+.btn-remove-user {
+    float: right;
+    margin-right: .3em;
+    width: 1.3em;
+    height: 1em;
+    text-align: center;
+    vertical-align: text-top;
+    line-height: 1em;
+    padding: 0;
+}
