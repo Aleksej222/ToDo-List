@@ -1,8 +1,8 @@
-<h1>Zavrseni zadatci</h1>
+<h1 class="text-center">Zavrseni zadatci</h1>
 
 <div class="container test">
     <ul class="list-group">
-            <li class="">zadatak</li>
+            <li *ngFor="let task of doneTasks">{{task}}</li>
     </ul>
 </div>
 

@@ -3,14 +3,14 @@
         <div class="dropdown col-lg-2 col-sm-6 col-6">
             <button type="button" class="btn btn-primary dropdown-toggle w-100 three-dots"
                 [attr.data-toggle]="users.length>0?'dropdown':null">
-                {{selectedUser? selectedUser :'Svi korisnici'}}
+                {{selectedUser? selectedUser.name :'Svi korisnici'}}
             </button>
             <div class="dropdown-menu" id="dropdown">
                 <a (click) ="selectedUser=''" class="dropdown-item" href="#" *ngIf="users.length>0">Svi korisnici</a>
 
                 <div *ngFor="let user of users" class="row" (click) = "changeUser(user)">
                     <div class="col-10 three-dots">
-                        <a class="dropdown-item d-inline" href="#">{{user}}</a>
+                        <a class="dropdown-item d-inline" href="#">{{user.name}}</a>
                     </div>
                     <div class="col-2"> 
                         <button (click) = "deleteUser(user)" type="button" class="btn btn-primary btn-remove-user" data-toggle="tooltip"
@@ -43,8 +43,8 @@
             <button class="btn btn-success" type="submit">Dodaj Zadatak</button>
         </form>
 
-        <div *ngFor="let task of tasks" class="items">
-            <app-todo-list-item [task]="task"></app-todo-list-item>
+        <div *ngFor="let task of selectedUser?selectedUser.tasks:tasks" class="items">
+            <app-todo-list-item [task]="task" (done)="taskDoneEvent($event)" (delete)="deleteItem($event)"></app-todo-list-item>
         </div>
     </div>
 

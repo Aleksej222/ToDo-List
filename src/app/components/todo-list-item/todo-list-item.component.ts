@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { EventEmitter } from '@angular/core';
 import { CompletedTasksComponent } from '../modals/completed-tasks/completed-tasks.component';
 import { EditTaskComponent } from '../modals/edit-task/edit-task.component';
 
@@ -9,7 +10,10 @@ import { EditTaskComponent } from '../modals/edit-task/edit-task.component';
   styleUrls: ['./todo-list-item.component.css']
 })
 export class TodoListItemComponent implements OnInit {
+
   @Input() task:string='';
+  @Output() done=new EventEmitter();
+  @Output() delete=new EventEmitter();
   isExpanded:boolean=false;
   value:any;
   
@@ -19,7 +23,9 @@ export class TodoListItemComponent implements OnInit {
   }
 
   deleteItem(e:any) {
-    e.target.parentNode.parentNode.remove();
+  
+    
+      this.delete.emit(this.task);
   }
 
   editItem() {
@@ -47,15 +53,7 @@ export class TodoListItemComponent implements OnInit {
   }
 
   taskCompleted(e:any) {
-    var taskText = e.target.parentNode.parentNode.innerText;
-    console.log(taskText.innerText)
-
-    const dialogRef = this.dialog.open(CompletedTasksComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(result)
-      taskText.push(result);
-    });
-
+    this.done.emit(this.task);
+    //e.target.parentNode.parentNode.remove();
   }
 }
