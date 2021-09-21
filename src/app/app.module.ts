@@ -15,6 +15,8 @@ import { EditTaskComponent } from './components/modals/edit-task/edit-task.compo
 import { DeleteUserComponent } from './components/modals/delete-user/delete-user.component';
 import { CompletedTasksComponent } from './components/modals/completed-tasks/completed-tasks.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { CompletedTasksComponent } from './components/modals/completed-tasks/com
     CommonModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

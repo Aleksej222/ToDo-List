@@ -1,34 +1,31 @@
 <div class="container-fluid">
     <div class="row users">
         <div class="dropdown col-lg-2 col-sm-6 col-6">
-            <button type="button" class="btn btn-primary dropdown-toggle w-100 three-dots"
-                [attr.data-toggle]="users.length>0?'dropdown':null">
+            <button type="button" class="btn btn-primary dropdown-toggle w-100 three-dots" [attr.data-toggle]="users.length>0?'dropdown':null">
                 {{selectedUser? selectedUser.name :'Svi korisnici'}}
             </button>
             <div class="dropdown-menu" id="dropdown">
-                <a (click) ="selectedUser=''" class="dropdown-item" href="#" *ngIf="users.length>0">Svi korisnici</a>
+                <a (click)="selectedUser=''" class="dropdown-item" href="#" *ngIf="users.length>0">Svi korisnici</a>
 
-                <div *ngFor="let user of users" class="row" (click) = "changeUser(user)">
+                <div *ngFor="let user of users" class="row" (click)="changeUser(user)">
                     <div class="col-10 three-dots">
                         <a class="dropdown-item d-inline" href="#">{{user.name}}</a>
                     </div>
-                    <div class="col-2"> 
-                        <button (click) = "deleteUser(user)" type="button" class="btn btn-primary btn-remove-user" data-toggle="tooltip"
-                            data-placement="bottom" title="Ukloni korisnika">-</button>
+                    <div class="col-2">
+                        <button (click)="deleteUser(user)" type="button" class="btn btn-primary btn-remove-user" data-toggle="tooltip" data-placement="bottom" title="Ukloni korisnika">-</button>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="col-lg-1 col-sm-2 col-2">
-            <button (click)="addNewUser()" type="button" class="btn btn-primary" data-toggle="tooltip"
-                data-placement="bottom" title="Dodaj korisnika">
+            <button (click)="addNewUser()" type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Dodaj korisnika">
                 +
             </button>
         </div>
 
         <div class="col-lg-3 col-sm2 col-2">
-            <button (click) = "seeCompletedTasks()" type="button" class="btn btn-primary">Obavljeno</button>
+            <button (click)="seeCompletedTasks()" type="button" class="btn btn-primary">Obavljeno</button>
         </div>
 
     </div>
@@ -39,7 +36,7 @@
 
     <div class="container">
         <form (submit)="add($event)">
-            <input type="text" class="form-control w-50 d-inline" [(ngModel)]="newItem" name="biloSta">
+            <input type="text" class="form-control w-50 d-inline" [(ngModel)]="task.description" name="biloSta">
             <button class="btn btn-success" type="submit">Dodaj Zadatak</button>
         </form>
 

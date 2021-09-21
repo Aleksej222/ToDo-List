@@ -3,5 +3,6 @@ export default class Task{
 
     }
     text:string='';
+    description: string ="";
     isDone:boolean=false;
 }

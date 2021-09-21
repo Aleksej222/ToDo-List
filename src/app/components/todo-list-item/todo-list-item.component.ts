@@ -17,7 +17,10 @@ export class TodoListItemComponent implements OnInit {
   isExpanded:boolean=false;
   value:any;
   
-  constructor( public dialog: MatDialog) { }
+  constructor( 
+    public dialog: MatDialog,
+    
+    ) { }
 
   ngOnInit(): void {
   }

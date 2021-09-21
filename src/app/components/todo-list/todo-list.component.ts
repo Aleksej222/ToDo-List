@@ -5,7 +5,8 @@ import User from 'src/app/models/user';
 import { AddUserComponent } from '../modals/add-user/add-user.component';
 import { CompletedTasksComponent } from '../modals/completed-tasks/completed-tasks.component';
 import { DeleteUserComponent } from '../modals/delete-user/delete-user.component';
-
+import Task from 'src/app/models/task';
+import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -18,27 +19,34 @@ export class TodoListComponent implements OnInit {
   users = new Array<User>();
   selectedUser: any;
   doneTasks = new Array();
+  task: Task = new Task();
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private todoService: TodoService,
   ) {
 
   }
 
   ngOnInit(): void {
+
   }
 
   add(e: any) {
     e.preventDefault();
+    //!! FIX LATER, waiting for backend to be done
+    // if (this.newItem !== "" && this.selectedUser) {
+    //   this.selectedUser.tasks.push(this.newItem);
+    //   this.tasks.push(this.newItem);
+    // }
+    // else if (this.newItem){
+    //   this.tasks.push(this.newItem);
+    //  }
+    //this.taskText.description = this.newItem;
+    this.todoService.addOne(this.task).subscribe((response:Task) => {
+      this.tasks.push(response.description);
+      })
 
-    if (this.newItem !== "" && this.selectedUser) {
-      this.selectedUser.tasks.push(this.newItem);
-      this.tasks.push(this.newItem);
-    }
-    else if (this.newItem){
-      this.tasks.push(this.newItem);
-     }
-
-    this.newItem = "";
+    this.task.description = "";
   }
 
   addNewUser() {
