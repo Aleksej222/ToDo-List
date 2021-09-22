@@ -4,6 +4,7 @@ import { EventEmitter } from '@angular/core';
 import { CompletedTasksComponent } from '../modals/completed-tasks/completed-tasks.component';
 import { EditTaskComponent } from '../modals/edit-task/edit-task.component';
 import Task from 'src/app/models/task';
+import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
   selector: 'app-todo-list-item',
@@ -20,7 +21,7 @@ export class TodoListItemComponent implements OnInit {
   
   constructor( 
     public dialog: MatDialog,
-    
+    private todoService: TodoService
     ) { }
 
   ngOnInit(): void {
@@ -33,14 +34,24 @@ export class TodoListItemComponent implements OnInit {
   }
 
   editItem() {
-    const dialogRef = this.dialog.open(EditTaskComponent);
+    const dialogRef = this.dialog.open(EditTaskComponent,{
+      data: {
+        task: {...this.task}
+      }
+    });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result)
-      this.task = result;
+    dialogRef.afterClosed().subscribe((task:Task) => {
+      if(task) {
+        console.log(task)
+        
+        // this.task.description=result;
+        this.todoService.updateOne(task).subscribe((response: Task) => {
+          this.task=response; 
+        })
+      }
     });
   }
-
+ 
   expandText(e:any) {
     this.isExpanded=!this.isExpanded;
   }

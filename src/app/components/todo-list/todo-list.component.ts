@@ -20,6 +20,7 @@ export class TodoListComponent implements OnInit {
   selectedUser: any;
   doneTasks = new Array();
   task: Task = new Task();
+  
   constructor(
     public dialog: MatDialog,
     private todoService: TodoService,
