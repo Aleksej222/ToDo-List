@@ -14,7 +14,7 @@ import { TodoService } from 'src/app/services/todo.service';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  tasks = new Array<any>();
+  tasks = new Array<Task>();
   newItem: string = "";
   users = new Array<User>();
   selectedUser: any;
@@ -28,10 +28,22 @@ export class TodoListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.todoService.getAll().subscribe((response: Task[]) => {
+      console.log(response);
+      //better way
+      this.tasks = response.filter(e => e.description);
+      /*
+      response.forEach((item: any) => {
+        if(item.description) 
+        {
+          this.tasks.push(item.description);
+        } 
+        })
+        */
+    })
   }
 
-  add(e: any) {
+  addTask(e: any) {
     e.preventDefault();
     //!! FIX LATER, waiting for backend to be done
     // if (this.newItem !== "" && this.selectedUser) {
@@ -42,12 +54,37 @@ export class TodoListComponent implements OnInit {
     //   this.tasks.push(this.newItem);
     //  }
     //this.taskText.description = this.newItem;
-    this.todoService.addOne(this.task).subscribe((response:Task) => {
-      this.tasks.push(response.description);
-      })
-
+    if(this.task.description)
+    {
+      this.todoService.addOne(this.task).subscribe((response: Task) => {
+        if(response.description) 
+        {
+          this.tasks.push(response);
+        } 
+        })
+  
+    }
     this.task.description = "";
   }
+
+  deleteItem (task: Task) {
+
+    // let foundUser=this.users[index];
+    // this.tasks=this.tasks.filter(t=>foundUser.tasks.includes(t)==false);
+
+    // this.users.forEach(u=>{
+    //   u.tasks=u.tasks.filter(t=>t!=item);
+    // })
+    // this.tasks.splice(index, 1);
+
+    var index = this.tasks.indexOf(task);   //comment this
+    this.todoService.deleteOne(task).subscribe((response: Task) => {
+       this.tasks.splice(index, 1);        //and this
+      //  this.tasks=this.tasks.filter(t => t.id! = response.id)
+    })
+    
+  }
+
 
   addNewUser() {
     const dialogRef = this.dialog.open(AddUserComponent);
@@ -81,16 +118,6 @@ export class TodoListComponent implements OnInit {
     })
   }
 
-  deleteItem (item: any) {
-    var index = this.tasks.indexOf(item);
-    // let foundUser=this.users[index];
-    // this.tasks=this.tasks.filter(t=>foundUser.tasks.includes(t)==false);
-    this.users.forEach(u=>{
-      u.tasks=u.tasks.filter(t=>t!=item);
-    })
-    this.tasks.splice(index, 1);
-    
-  }
 
   changeUser(user: any) {
     this.selectedUser = user

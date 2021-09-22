@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EventEmitter } from '@angular/core';
 import { CompletedTasksComponent } from '../modals/completed-tasks/completed-tasks.component';
 import { EditTaskComponent } from '../modals/edit-task/edit-task.component';
+import Task from 'src/app/models/task';
 
 @Component({
   selector: 'app-todo-list-item',
@@ -11,7 +12,7 @@ import { EditTaskComponent } from '../modals/edit-task/edit-task.component';
 })
 export class TodoListItemComponent implements OnInit {
 
-  @Input() task:string='';
+  @Input() task:Task;
   @Output() done=new EventEmitter();
   @Output() delete=new EventEmitter();
   isExpanded:boolean=false;

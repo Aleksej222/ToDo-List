@@ -9,12 +9,22 @@ export class TodoService {
 
 
   constructor(
-    private http: HttpClient,
+    private _http: HttpClient,
   ) { }
 
   //** This is post request
   addOne (task: Task) {
     let url = "http://192.168.4.108:5001/api/todo/";
-    return this.http.post<Task>(url, task);
+    return this._http.post<Task>(url, task);
+  }
+
+  getAll() {
+    let url = "http://192.168.4.108:5001/api/todo/";
+    return this._http.get<Task[]>(url);
+  }
+
+  deleteOne(task: Task) {
+    let url = `http://192.168.4.108:5001/api/todo/${task.id}`;
+    return this._http.delete<Task>(url);
   }
 }
