@@ -1,5 +1,6 @@
+import { NgxPaginationModule } from 'ngx-pagination';
 import { ThisReceiver } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import User from 'src/app/models/user';
 import { AddUserComponent } from '../modals/add-user/add-user.component';
@@ -7,6 +8,7 @@ import { CompletedTasksComponent } from '../modals/completed-tasks/completed-tas
 import { DeleteUserComponent } from '../modals/delete-user/delete-user.component';
 import Task from 'src/app/models/task';
 import { TodoService } from 'src/app/services/todo.service';
+
 
 @Component({
   selector: 'app-todo-list',
@@ -20,6 +22,9 @@ export class TodoListComponent implements OnInit {
   selectedUser: any;
   doneTasks = new Array();
   task: Task = new Task();
+
+  totalPages: Number;
+  page: Number = 1;
   
   constructor(
     public dialog: MatDialog,
@@ -27,6 +32,8 @@ export class TodoListComponent implements OnInit {
   ) {
 
   }
+
+  // @ViewChild(MatPaginator) paginator: MatPaginator
 
   ngOnInit(): void {
     this.todoService.getAll().subscribe((response: Task[]) => {
@@ -41,7 +48,9 @@ export class TodoListComponent implements OnInit {
         } 
         })
         */
+       this.totalPages = this.tasks.length;
     })
+ 
   }
 
   addTask(e: any) {

@@ -40,9 +40,18 @@
             <button class="btn btn-success" type="submit">Dodaj Zadatak</button>
         </form>
 
-        <div *ngFor="let task of selectedUser?selectedUser.tasks:tasks" class="items">
+        <div class="items" *ngFor="let task of selectedUser?selectedUser.tasks:tasks | paginate: {
+            id: 'listing-pagination',
+        itemsPerPage: 10,
+        currentPage: page.toString(),
+        totalItems: tasks.length
+        }">
             <app-todo-list-item [task]="task" (done)="taskDoneEvent($event)" (delete)="deleteItem($event)"></app-todo-list-item>
         </div>
+    </div>
+
+    <div class="pages">
+        <pagination-controls class="pages" id="listing-pagination" (pageChange)="page = $event"></pagination-controls>
     </div>
 
 </div>
